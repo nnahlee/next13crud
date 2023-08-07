@@ -70,7 +70,7 @@ const Users = ({ users }: { users: User[] }) => {
                   sm:text-center
                 "
               >
-                <h2 className="text-center">id: {user.id}</h2>
+                <h2 className="text-center">id - {user.id}</h2>
                 <h2 className="text-center">name: {user.name}</h2>
                 <h2 className="text-center">email: {user.email}</h2>
 
