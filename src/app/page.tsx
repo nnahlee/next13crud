@@ -1,6 +1,6 @@
 // csr
 import Users from "./components/Users";
-
+export const dynamic = "force-dynamic";
 // ssr In Home page
 async function getUsers() {
   try {
