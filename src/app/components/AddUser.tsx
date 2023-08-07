@@ -23,7 +23,7 @@ const AddUser: React.FC<AddUserProps> = ({ clientUsers, setClientUsers }) => {
     name: "",
   });
   const [err, setErr] = useState<boolean>(false);
-  console.log(apiBASEURL);
+  // console.log(apiBASEURL);
 
   const handleAddUser = async (newUserData: User) => {
     try {

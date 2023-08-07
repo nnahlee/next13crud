@@ -31,13 +31,12 @@ const Users = ({ users }: { users: User[] }) => {
   };
 
   const handleDelete = async (id: number | undefined) => {
+    // delete user from server db
+    const { data } = await axios.delete(`${apiBASEURL}/api/users/${id}`);
+    console.log(data);
     // update frontEnd state to match deleted
     const updatedUsers = users.filter((user) => user.id !== id);
     setClientUsers(updatedUsers);
-
-    // delete user from server db
-    const { data } = await axios.delete(`${apiBASEURL}/api/users/${id}`);
-    return data;
   };
 
   return (
