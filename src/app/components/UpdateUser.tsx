@@ -28,9 +28,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
   clientUsers,
   setClientUsers,
   currentMatch,
-  setCurrentMatch,
   setIsActive,
-  isActive,
 }) => {
   const [data, setData] = useState<Data>({
     id: 0,

@@ -3,10 +3,19 @@ import Users from "./components/Users";
 
 // ssr In Home page
 async function getUsers() {
-  // revalidate crud state from server every 4s
-  const res = await fetch(`${process.env.BASE_URL}/api/users`);
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/api/users`, {
+      cache: "no-store",
+    });
 
-  return res.json();
+    if (!res.ok) {
+      throw new Error("fetch failed");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export default async function Home() {

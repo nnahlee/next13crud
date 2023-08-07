@@ -26,7 +26,7 @@ const AddUser: React.FC<AddUserProps> = ({ clientUsers, setClientUsers }) => {
   const handleAddUser = async (newUserData: User) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:3000/api/users/add`,
+        `${process.env.BASE_URL}/api/users/add`,
         newUserData
       );
 
