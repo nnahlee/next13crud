@@ -1,26 +1,10 @@
 // csr
 import Users from "./components/Users";
-
-// ssr In Home page
-async function getUsers() {
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/api/users`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("fetch failed");
-    }
-
-    return res.json();
-  } catch (error) {
-    console.log(error);
-  }
-}
+import { prisma } from "../../db/connect";
+// // ssr In Home page
 
 export default async function Home() {
-  const users = await getUsers();
-  if (!users) return <div>no users</div>;
+  const users = await prisma.user.findMany();
 
   return <Users users={users} />;
 }
