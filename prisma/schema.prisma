@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// npx prisma migrate dev for any changes in model keep in sync with schema
+
+// npx prisma generate for typescript with client sync
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+  // one to many relation ship with Post model using posts field
+  // i.e each user can have multiple posts
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String
+
+  preferences Json?
+
+  posts Post[]
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  text String
+  published Boolean? @default(false)
+  rating Int
+  createdAt DateTime?
+  authorId Int?
+  // references id of the User model
+  author User? @relation(fields: [authorId], references: [id])
+}
+
+
