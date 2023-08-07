@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { UserPlus2 } from "lucide-react";
 import axios from "axios";
+import apiBASEURL from "../../../config/apiConfig";
 
 interface User {
   id: number | undefined;
@@ -26,7 +27,7 @@ const AddUser: React.FC<AddUserProps> = ({ clientUsers, setClientUsers }) => {
   const handleAddUser = async (newUserData: User) => {
     try {
       const { data } = await axios.post(
-        `https://next13crud.vercel.app/api/users/add`,
+        `${apiBASEURL}/api/users/add`,
         newUserData
       );
 

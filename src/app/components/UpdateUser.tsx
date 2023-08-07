@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import apiBASEURL from "../../../config/apiConfig";
 
 interface User {
   id: number | undefined;
@@ -61,7 +62,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
       const { name, email } = data;
       // update in server db
       const { data: updatedUserData } = await axios.patch(
-        `http://localhost:3000/api/users/update/${currentMatch?.id}`,
+        `${apiBASEURL}/api/users/update/${currentMatch?.id}`,
         {
           name,
           email,

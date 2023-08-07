@@ -3,6 +3,7 @@
 import axios from "axios";
 import { UserSquare2 } from "lucide-react";
 import { useState } from "react";
+import apiBASEURL from "../../../config/apiConfig";
 // components
 import AddUser from "./AddUser";
 import UpdateUser from "./UpdateUser";
@@ -35,9 +36,7 @@ const Users = ({ users }: { users: User[] }) => {
     setClientUsers(updatedUsers);
 
     // delete user from server db
-    const { data } = await axios.delete(
-      `http://localhost:3000/api/users/${id}`
-    );
+    const { data } = await axios.delete(`${apiBASEURL}/api/users/${id}`);
     return data;
   };
 
