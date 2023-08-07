@@ -10,10 +10,17 @@ export async function PATCH(
   req: Request,
   { params }: { params: { id: number } }
 ) {
+  const id = +params.id;
+
+  if (!id) {
+    return NextResponse.json({
+      message: `please provide id to update`,
+    });
+  }
+
   try {
     const data = (await req.json()) as Payload;
     const { name, email } = data;
-    const id = +params.id;
 
     const userExists = await prisma.user.findUnique({
       where: {

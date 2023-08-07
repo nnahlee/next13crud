@@ -5,14 +5,13 @@ export async function DELETE(
   request: Request,
   { params }: { params: { id: number } }
 ) {
+  const id = +params.id;
+  if (!id)
+    return NextResponse.json({
+      message: "id is required for deletion",
+    });
+
   try {
-    const id = +params.id;
-
-    if (!id)
-      return NextResponse.json({
-        message: "id is required for deletion",
-      });
-
     const user = await prisma.user.findFirst({
       where: {
         id,
