@@ -36,7 +36,7 @@ const Users = ({ users }: { users: User[] }) => {
 
     // delete user from server db
     const { data } = await axios.delete(
-      `http://localhost:3000/api/users/${id}`
+      `${process.env.BASE_URL}/api/users/${id}`
     );
     return data;
   };

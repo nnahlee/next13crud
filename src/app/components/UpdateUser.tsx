@@ -63,7 +63,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
       const { name, email } = data;
       // update in server db
       const { data: updatedUserData } = await axios.patch(
-        `http://localhost:3000/api/users/update/${currentMatch?.id}`,
+        `${process.env.BASE_URL}/api/users/update/${currentMatch?.id}`,
         {
           name,
           email,
