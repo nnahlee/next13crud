@@ -1,7 +1,6 @@
 // csr
 import Users from "./components/Users";
 
-export const dynamic = "force-dynamic";
 // ssr In Home page
 async function getUsers() {
   try {
@@ -21,6 +20,7 @@ async function getUsers() {
 
 export default async function Home() {
   const users = await getUsers();
+  if (!users) return <div>no users</div>;
 
   return <Users users={users} />;
 }
